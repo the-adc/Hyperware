@@ -4,6 +4,14 @@ Language: Cpp
 Standard: c++17
 DerivePointerAlignment: false
 PointerAlignment: Left
+# Google style, but with tabs like the rest of the code
+UseTab: Always
+TabWidth: 4
+IndentWidth: 4
+ContinuationIndentWidth: 4
+ConstructorInitializerIndentWidth: 4
+AccessModifierOffset: -4
+BreakConstructorInitializers: AfterColon
 # related header, C headers (SDL counts), C++ std, other libs, then ours
 IncludeBlocks: Regroup
 IncludeCategories:
