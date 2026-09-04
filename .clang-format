@@ -1,0 +1,17 @@
+# https://google.github.io/styleguide/cppguide.html
+BasedOnStyle: Google
+Language: Cpp
+Standard: c++17
+DerivePointerAlignment: false
+PointerAlignment: Left
+# related header, C headers (SDL counts), C++ std, other libs, then ours
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^<.*\.h>'
+    Priority: 1
+  - Regex: '^<[a-z_]+>'
+    Priority: 2
+  - Regex: '^<.*'
+    Priority: 3
+  - Regex: '.*'
+    Priority: 4
