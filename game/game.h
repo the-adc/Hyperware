@@ -1,12 +1,9 @@
-#ifndef GAME_GAME_H_
-#define GAME_GAME_H_
-
-#include <memory>
+#ifndef HYPER_GAME_GAME_H_
+#define HYPER_GAME_GAME_H_
 
 #include "engine/clock.h"
 #include "engine/graphics.h"
 #include "engine/vec2.h"
-#include "game/scene.h"
 
 namespace game {
 
@@ -47,11 +44,6 @@ public:
 
 	// Author: Yash Mahmud
 	//
-	// Changes the current scene to the provided scene.
-	void ChangeScene(std::unique_ptr<Scene> scene);
-
-	// Author: Yash Mahmud
-	//
 	// Quits the game.
 	void Quit();
 
@@ -59,19 +51,15 @@ public:
 	const engine::Vec2& screen_size() const { return screen_size_; }
 	const engine::Vec2& screen_center() const { return screen_center_; }
 	engine::Surface* screen() const { return screen_; }
-	Scene* current_scene() const { return current_scene_.get(); }
-	Scene* previous_scene() const { return previous_scene_.get(); }
 
 private:
 	bool running_;
 	engine::Vec2 screen_size_;
 	engine::Vec2 screen_center_;
 	engine::Surface* screen_;
-	std::unique_ptr<Scene> current_scene_;
-	std::unique_ptr<Scene> previous_scene_;
 	engine::Clock clock_;
 };
 
-}
+}  // namespace game
 
-#endif
+#endif  // HYPER_GAME_GAME_H_

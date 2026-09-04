@@ -27,22 +27,16 @@ Game::Game() {
 }
 
 Game::~Game() {
-	current_scene_.reset();
-	previous_scene_.reset();
 	engine::MixerQuit();
 	engine::graphics::Quit();
 }
 
 void Game::Draw() {
 	screen_->Fill(Color(202, 228, 241));
-
-	current_scene_->draw(*screen_);
 }
 
 void Game::Update() {
 	clock_.Tick(60);
-
-	current_scene_->update();
 }
 
 void Game::Events() {
@@ -63,8 +57,6 @@ void Game::Events() {
 				engine::ToggleMusic();
 			}
 		}
-
-		current_scene_->events(event);
 	}
 }
 
@@ -79,16 +71,9 @@ void Game::Run() {
 		Draw();
 
 		engine::graphics::Update();
-
-		previous_scene_.reset();
 	}
-}
-
-void Game::ChangeScene(std::unique_ptr<Scene> scene) {
-	previous_scene_ = std::move(current_scene_);
-	current_scene_ = std::move(scene);
 }
 
 void Game::Quit() { running_ = false; }
 
-}
+}  // namespace game
