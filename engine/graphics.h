@@ -1,33 +1,15 @@
-#ifndef ENGINE_GRAPHICS_H_
-#define ENGINE_GRAPHICS_H_
+#ifndef HYPER_ENGINE_GRAPHICS_H_
+#define HYPER_ENGINE_GRAPHICS_H_
 
 #include <SDL.h>
 #include <SDL_ttf.h>
 
 #include <string>
 
+#include "engine/color.h"
 #include "engine/vec2.h"
 
 namespace engine {
-
-struct Color {
-	Uint8 r;
-	Uint8 g;
-	Uint8 b;
-	Uint8 a;
-
-	Color() : r(0), g(0), b(0), a(255) {}
-	Color(int r, int g, int b) :
-		r(static_cast<Uint8>(r)),
-		g(static_cast<Uint8>(g)),
-		b(static_cast<Uint8>(b)),
-		a(255) {}
-	Color(int r, int g, int b, int a) :
-		r(static_cast<Uint8>(r)),
-		g(static_cast<Uint8>(g)),
-		b(static_cast<Uint8>(b)),
-		a(static_cast<Uint8>(a)) {}
-};
 
 struct Rect {
 	int x;
@@ -106,8 +88,8 @@ Surface Rotate(const Surface& src, double angle);
 TTF_Font* LoadFont(const std::string& path, int ptsize);
 Surface RenderText(TTF_Font* font, const std::string& text, const Color& color);
 
-}
+}  // namespace graphics
 
-}
+}  // namespace engine
 
-#endif
+#endif  // HYPER_ENGINE_GRAPHICS_H_

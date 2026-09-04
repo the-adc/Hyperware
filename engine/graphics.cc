@@ -219,7 +219,7 @@ Surface Rotate90(const Surface& src, int angle) {
 	return Surface(dst, dstwidth, dstheight, true);
 }
 
-}
+}  // namespace
 
 namespace graphics {
 
@@ -573,6 +573,6 @@ Surface Rotate(const Surface& src, double angle) {
 	return Surface(dst, nxmax, nymax, true);
 }
 
-}
+}  // namespace graphics
 
-}
+}  // namespace engine
