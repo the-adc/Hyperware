@@ -21,13 +21,13 @@ Game::Game() {
 
 	engine::graphics::Init(engine::graphics::Trunc(screen_size_.x),
 		engine::graphics::Trunc(screen_size_.y), "Game Title");
-	engine::MixerInit();
+	engine::Util::MixerInit();
 
 	screen_ = &engine::graphics::Screen();
 }
 
 Game::~Game() {
-	engine::MixerQuit();
+	engine::Util::MixerQuit();
 	engine::graphics::Quit();
 }
 
@@ -54,7 +54,7 @@ void Game::Events() {
 				Quit();
 			}
 			if (event.key == SDLK_F1) {
-				engine::ToggleMusic();
+				engine::Util::ToggleMusic();
 			}
 		}
 	}
