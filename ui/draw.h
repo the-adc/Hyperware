@@ -1,5 +1,5 @@
-#ifndef UI_DRAW_H_
-#define UI_DRAW_H_
+#ifndef HYPER_UI_DRAW_H_
+#define HYPER_UI_DRAW_H_
 
 #include <string>
 
@@ -16,6 +16,6 @@ void BlitText(engine::Surface& dst, TTF_Font* font, const std::string& text,
 	const engine::Color& color, const engine::Rect& area,
 	const std::string& horizontal, const std::string& vertical);
 
-}
+}  // namespace ui
 
-#endif
+#endif  // HYPER_UI_DRAW_H_

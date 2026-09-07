@@ -34,4 +34,4 @@ Rect UiElement::AbsoluteRect() const {
 
 void UiElement::Kill() { alive_ = false; }
 
-}
+}  // namespace ui

@@ -11,7 +11,7 @@ std::deque<Event>& Queue() {
 	return *pending;
 }
 
-}
+}  // namespace
 
 namespace events {
 
@@ -64,6 +64,6 @@ std::vector<Event> Get() {
 	return result;
 }
 
-}
+}  // namespace events
 
-}
+}  // namespace engine

@@ -160,4 +160,4 @@ void UiDropDownMenu::DrawOverlay(Surface& surface) {
 	}
 }
 
-}
+}  // namespace ui

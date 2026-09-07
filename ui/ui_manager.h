@@ -1,5 +1,5 @@
-#ifndef UI_UI_MANAGER_H_
-#define UI_UI_MANAGER_H_
+#ifndef HYPER_UI_UI_MANAGER_H_
+#define HYPER_UI_UI_MANAGER_H_
 
 #include <string>
 #include <vector>
@@ -40,6 +40,6 @@ private:
 	std::vector<UiElement*> elements_;
 };
 
-}
+}  // namespace ui
 
-#endif
+#endif  // HYPER_UI_UI_MANAGER_H_

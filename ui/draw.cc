@@ -33,7 +33,7 @@ inline void BlendPixel(
 		static_cast<Uint8>(nb), static_cast<Uint8>(na));
 }
 
-}
+}  // namespace
 
 void FillRoundedRect(
 	Surface& dst, const Rect& area, int radius, const Color& color) {
@@ -142,4 +142,4 @@ void BlitText(Surface& dst, TTF_Font* font, const std::string& text,
 	dst.Blit(rendered, x, y);
 }
 
-}
+}  // namespace ui

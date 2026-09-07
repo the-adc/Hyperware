@@ -51,4 +51,4 @@ void Sprite::SetPositionSmooth(const Vec2& pos, double amount) {
 	}
 }
 
-}
+}  // namespace engine

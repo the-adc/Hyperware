@@ -1,5 +1,5 @@
-#ifndef UI_UI_TEXT_BOX_H_
-#define UI_UI_TEXT_BOX_H_
+#ifndef HYPER_UI_UI_TEXT_BOX_H_
+#define HYPER_UI_UI_TEXT_BOX_H_
 
 #include <string>
 
@@ -21,6 +21,6 @@ private:
 	std::string html_text_;
 };
 
-}
+}  // namespace ui
 
-#endif
+#endif  // HYPER_UI_UI_TEXT_BOX_H_

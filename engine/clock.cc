@@ -28,4 +28,4 @@ int Clock::Tick(int framerate) {
 	return static_cast<int>(time_passed_);
 }
 
-}
+}  // namespace engine

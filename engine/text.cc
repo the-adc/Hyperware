@@ -56,4 +56,4 @@ void Text::SetAlignment(Alignment alignment) {
 	}
 }
 
-}
+}  // namespace engine

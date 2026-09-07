@@ -31,7 +31,7 @@ const std::string* LookupString(const nlohmann::json& data,
 	return &key_it->get_ref<const std::string&>();
 }
 
-}
+}  // namespace
 
 void Theme::Load(const std::string& path) {
 	std::ifstream file(engine::graphics::ResolvePath(path));
@@ -118,4 +118,4 @@ int Theme::FontSize(const std::string& block, int fallback) const {
 	return fallback;
 }
 
-}
+}  // namespace ui

@@ -1,5 +1,5 @@
-#ifndef ENGINE_EVENTS_H_
-#define ENGINE_EVENTS_H_
+#ifndef HYPER_ENGINE_EVENTS_H_
+#define HYPER_ENGINE_EVENTS_H_
 
 #include <SDL.h>
 
@@ -52,8 +52,8 @@ namespace events {
 void Post(const Event& event);
 std::vector<Event> Get();
 
-}
+}  // namespace events
 
-}
+}  // namespace engine
 
-#endif
+#endif  // HYPER_ENGINE_EVENTS_H_

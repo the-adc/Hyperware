@@ -1,5 +1,5 @@
-#ifndef UI_UI_BUTTON_H_
-#define UI_UI_BUTTON_H_
+#ifndef HYPER_UI_UI_BUTTON_H_
+#define HYPER_UI_UI_BUTTON_H_
 
 #include <string>
 
@@ -27,6 +27,6 @@ private:
 	bool held_;
 };
 
-}
+}  // namespace ui
 
-#endif
+#endif  // HYPER_UI_UI_BUTTON_H_

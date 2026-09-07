@@ -77,4 +77,4 @@ void UiTextBox::Draw(Surface& surface) {
 	SDL_SetClipRect(surface.raw(), &previous_clip);
 }
 
-}
+}  // namespace ui

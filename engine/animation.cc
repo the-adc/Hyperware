@@ -63,4 +63,4 @@ void Animation::SetOnUpdate(const std::function<void()>& func) {
 	update_func_ = func;
 }
 
-}
+}  // namespace engine

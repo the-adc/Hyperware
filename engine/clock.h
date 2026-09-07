@@ -1,5 +1,5 @@
-#ifndef ENGINE_CLOCK_H_
-#define ENGINE_CLOCK_H_
+#ifndef HYPER_ENGINE_CLOCK_H_
+#define HYPER_ENGINE_CLOCK_H_
 
 #include <SDL.h>
 
@@ -17,6 +17,6 @@ private:
 	Uint32 raw_passed_;
 };
 
-}
+}  // namespace engine
 
-#endif
+#endif  // HYPER_ENGINE_CLOCK_H_

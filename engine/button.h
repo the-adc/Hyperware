@@ -1,5 +1,5 @@
-#ifndef ENGINE_BUTTON_H_
-#define ENGINE_BUTTON_H_
+#ifndef HYPER_ENGINE_BUTTON_H_
+#define HYPER_ENGINE_BUTTON_H_
 
 #include <string>
 
@@ -90,6 +90,6 @@ private:
 	bool clicked_;
 };
 
-}
+}  // namespace engine
 
-#endif
+#endif  // HYPER_ENGINE_BUTTON_H_

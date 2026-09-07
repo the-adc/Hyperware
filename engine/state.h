@@ -1,5 +1,5 @@
-#ifndef ENGINE_STATE_H_
-#define ENGINE_STATE_H_
+#ifndef HYPER_ENGINE_STATE_H_
+#define HYPER_ENGINE_STATE_H_
 
 #include <nlohmann/json.hpp>
 
@@ -42,6 +42,6 @@ public:
 	void Load(const Json& /*data*/) {}
 };
 
-}
+}  // namespace engine
 
-#endif
+#endif  // HYPER_ENGINE_STATE_H_

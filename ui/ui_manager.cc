@@ -78,4 +78,4 @@ void UiManager::DrawUi(engine::Surface& surface) {
 	}
 }
 
-}
+}  // namespace ui

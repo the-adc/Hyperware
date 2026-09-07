@@ -1,5 +1,5 @@
-#ifndef ENGINE_ANIMATION_H_
-#define ENGINE_ANIMATION_H_
+#ifndef HYPER_ENGINE_ANIMATION_H_
+#define HYPER_ENGINE_ANIMATION_H_
 
 #include <functional>
 #include <vector>
@@ -107,6 +107,6 @@ private:
 	int current_delay_;
 };
 
-}
+}  // namespace engine
 
-#endif
+#endif  // HYPER_ENGINE_ANIMATION_H_

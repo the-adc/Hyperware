@@ -144,4 +144,4 @@ void UiWindow::Draw(Surface& surface) {
 		"center", "center");
 }
 
-}
+}  // namespace ui

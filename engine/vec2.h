@@ -1,5 +1,5 @@
-#ifndef ENGINE_VEC2_H_
-#define ENGINE_VEC2_H_
+#ifndef HYPER_ENGINE_VEC2_H_
+#define HYPER_ENGINE_VEC2_H_
 
 #include <cmath>
 #include <optional>
@@ -94,6 +94,6 @@ inline std::optional<Vec2> Vec2::Slerp(
 	return Vec2((from.x * f1 + to.x * f2) * f0, (from.y * f1 + to.y * f2) * f0);
 }
 
-}
+}  // namespace engine
 
-#endif
+#endif  // HYPER_ENGINE_VEC2_H_

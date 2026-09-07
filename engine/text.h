@@ -1,5 +1,5 @@
-#ifndef ENGINE_TEXT_H_
-#define ENGINE_TEXT_H_
+#ifndef HYPER_ENGINE_TEXT_H_
+#define HYPER_ENGINE_TEXT_H_
 
 #include <string>
 
@@ -93,6 +93,6 @@ private:
 	Rect text_rect_;
 };
 
-}
+}  // namespace engine
 
-#endif
+#endif  // HYPER_ENGINE_TEXT_H_

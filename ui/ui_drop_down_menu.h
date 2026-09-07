@@ -1,5 +1,5 @@
-#ifndef UI_UI_DROP_DOWN_MENU_H_
-#define UI_UI_DROP_DOWN_MENU_H_
+#ifndef HYPER_UI_UI_DROP_DOWN_MENU_H_
+#define HYPER_UI_UI_DROP_DOWN_MENU_H_
 
 #include <string>
 #include <vector>
@@ -34,6 +34,6 @@ private:
 	bool expanded_;
 };
 
-}
+}  // namespace ui
 
-#endif
+#endif  // HYPER_UI_UI_DROP_DOWN_MENU_H_

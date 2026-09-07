@@ -1,5 +1,5 @@
-#ifndef UI_UI_ELEMENT_H_
-#define UI_UI_ELEMENT_H_
+#ifndef HYPER_UI_UI_ELEMENT_H_
+#define HYPER_UI_UI_ELEMENT_H_
 
 #include "engine/events.h"
 #include "engine/graphics.h"
@@ -45,6 +45,6 @@ private:
 	bool alive_;
 };
 
-}
+}  // namespace ui
 
-#endif
+#endif  // HYPER_UI_UI_ELEMENT_H_

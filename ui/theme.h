@@ -1,5 +1,5 @@
-#ifndef UI_THEME_H_
-#define UI_THEME_H_
+#ifndef HYPER_UI_THEME_H_
+#define HYPER_UI_THEME_H_
 
 #include <nlohmann/json.hpp>
 #include <string>
@@ -31,6 +31,6 @@ private:
 	nlohmann::json data_;
 };
 
-}
+}  // namespace ui
 
-#endif
+#endif  // HYPER_UI_THEME_H_

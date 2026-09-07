@@ -1,5 +1,5 @@
-#ifndef ENGINE_SPRITE_H_
-#define ENGINE_SPRITE_H_
+#ifndef HYPER_ENGINE_SPRITE_H_
+#define HYPER_ENGINE_SPRITE_H_
 
 #include <array>
 #include <string>
@@ -118,6 +118,6 @@ private:
 	std::string filename_;
 };
 
-}
+}  // namespace engine
 
-#endif
+#endif  // HYPER_ENGINE_SPRITE_H_

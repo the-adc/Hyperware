@@ -43,4 +43,4 @@ bool Button::Update() {
 	return clicked_;
 }
 
-}
+}  // namespace engine
