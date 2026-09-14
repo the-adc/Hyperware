@@ -17,15 +17,18 @@ find_package(SDL2_image CONFIG REQUIRED)
 find_package(SDL2_mixer CONFIG REQUIRED)
 find_package(SDL2_ttf CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
+find_package(SFML 3 COMPONENTS Graphics CONFIG REQUIRED)
 
 # engine/ is a library, game/ is the game
 set(ENGINE_SOURCES
     engine/actions/action_list.cc
     engine/actions/do_nothing_action.cc
     engine/animation.cc
+    engine/assets.cc
     engine/button.cc
     engine/capabilities/capability_set.cc
     engine/clock.cc
+    engine/display/display.cc
     engine/events.cc
     engine/graphics.cc
     engine/random.cc
@@ -60,6 +63,7 @@ target_link_libraries(engine PUBLIC
     SDL2_image::SDL2_image
     SDL2_mixer::SDL2_mixer
     SDL2_ttf::SDL2_ttf
+    SFML::Graphics
     nlohmann_json::nlohmann_json)
 
 target_link_libraries(MyGame PRIVATE engine SDL2::SDL2main)
