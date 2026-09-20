@@ -22,7 +22,11 @@ find_package(SFML 3 COMPONENTS Graphics CONFIG REQUIRED)
 # engine/ is a library, game/ is the game
 set(ENGINE_SOURCES
     engine/actions/action_list.cc
+    engine/actions/destroy_self_action.cc
     engine/actions/do_nothing_action.cc
+    engine/actions/sequence_action.cc
+    engine/actions/set_motion_action.cc
+    engine/actors/actor.cc
     engine/animation.cc
     engine/assets.cc
     engine/button.cc
@@ -31,6 +35,8 @@ set(ENGINE_SOURCES
     engine/display/display.cc
     engine/events.cc
     engine/graphics.cc
+    engine/positions/game_map.cc
+    engine/positions/world.cc
     engine/random.cc
     engine/sprite.cc
     engine/text.cc
