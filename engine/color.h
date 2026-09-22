@@ -1,32 +1,11 @@
 #ifndef HYPER_ENGINE_COLOR_H_
 #define HYPER_ENGINE_COLOR_H_
 
-#include <cstdint>
+#include <SFML/Graphics/Color.hpp>
 
 namespace engine {
 
-struct Color {
-	std::uint8_t r;
-	std::uint8_t g;
-	std::uint8_t b;
-	std::uint8_t a;
-
-	constexpr Color() : r(0), g(0), b(0), a(255) {}
-	constexpr Color(int r, int g, int b) :
-		r(static_cast<std::uint8_t>(r)),
-		g(static_cast<std::uint8_t>(g)),
-		b(static_cast<std::uint8_t>(b)),
-		a(255) {}
-	constexpr Color(int r, int g, int b, int a) :
-		r(static_cast<std::uint8_t>(r)),
-		g(static_cast<std::uint8_t>(g)),
-		b(static_cast<std::uint8_t>(b)),
-		a(static_cast<std::uint8_t>(a)) {}
-
-	bool operator==(const Color& other) const {
-		return r == other.r && g == other.g && b == other.b && a == other.a;
-	}
-};
+using Color = sf::Color;
 
 // these colors are based off the color constants from GameMaker
 // NOLINTBEGIN(readability-identifier-naming)
