@@ -58,6 +58,7 @@ public:
 		bool outline);
 
 	void ToggleFullscreen();
+	void SetCursorVisible(bool visible);
 
 	// for the mouse
 	void WindowToRoom(int window_x, int window_y, double* room_x,
@@ -73,6 +74,7 @@ private:
 	sf::RenderTexture surface_;
 	std::string title_;
 	bool fullscreen_ = false;
+	bool cursor_visible_ = true;
 
 	int view_width_ = 640;
 	int view_height_ = 480;

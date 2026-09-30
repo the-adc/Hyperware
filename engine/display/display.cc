@@ -53,6 +53,7 @@ void Display::CreateWindow() {
 	} else {
 		window_.create(sf::VideoMode(Size(port_width_, port_height_)), title_);
 	}
+	window_.setMouseCursorVisible(cursor_visible_);
 }
 
 bool Display::SetRoomSurface(int view_width, int view_height, int port_width,
@@ -249,6 +250,11 @@ void Display::CircleColor(double x, double y, double radius, Color inner,
 void Display::ToggleFullscreen() {
 	fullscreen_ = !fullscreen_;
 	CreateWindow();
+}
+
+void Display::SetCursorVisible(bool visible) {
+	cursor_visible_ = visible;
+	window_.setMouseCursorVisible(visible);
 }
 
 void Display::WindowToRoom(int window_x, int window_y, double* room_x,
