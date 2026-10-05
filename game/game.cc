@@ -1,79 +1,72 @@
 #include "game/game.h"
 
-#include <cstddef>
-#include <utility>
-#include <vector>
+#include <memory>
 
-#include "engine/events.h"
-#include "engine/utils.h"
+#include "engine/app.h"
+#include "engine/display/display.h"
+#include "engine/positions/game_map.h"
+#include "engine/positions/world.h"
+#include "game/objects.h"
+#include "game/objects/player.h"
+#include "game/resources.h"
 
 namespace game {
+namespace {
 
-using engine::Color;
-using engine::Event;
-using engine::EventType;
+// on the heap and never deleted, the world can't be destroyed trivially
+struct State {
+	engine::App app;
+	engine::GameMap* main_room = nullptr;
+};
 
-Game::Game() {
-	running_ = true;
-
-	screen_size_ = engine::Vec2(1200, 800);
-	screen_center_ = screen_size_.FloorDiv(2);
-
-	engine::graphics::Init(engine::graphics::Trunc(screen_size_.x),
-		engine::graphics::Trunc(screen_size_.y), "Game Title");
-	engine::Util::MixerInit();
-
-	screen_ = &engine::graphics::Screen();
+State& GetState() {
+	static State* state = new State;
+	return *state;
 }
 
-Game::~Game() {
-	engine::Util::MixerQuit();
-	engine::graphics::Quit();
+// One 640x480 room with a camera shown at the same size
+void BuildRooms() {
+	State& state = GetState();
+
+	std::unique_ptr<engine::GameMap> room =
+		std::make_unique<engine::GameMap>("main", 640, 480);
+	room->SetView(640, 480);
+	room->SetPort(640, 480);
+	// actors added here
+	room->AddPlacement<Player>(320, 240, 0);
+	state.main_room = state.app.world()->AddGameMap(std::move(room));
 }
 
-void Game::Draw() {
-	screen_->Fill(Color(202, 228, 241));
-}
+}  // namespace
 
-void Game::Update() {
-	clock_.Tick(60);
-}
+engine::World* GetWorld() { return GetState().app.world(); }
 
-void Game::Events() {
-	std::vector<Event> queued = engine::events::Get();
+engine::Display* GetDisplay() { return GetState().app.display(); }
 
-	for (size_t i = 0; i < queued.size(); ++i) {
-		const Event& event = queued[i];
+engine::GameMap* MainRoom() { return GetState().main_room; }
 
-		if (event.type == EventType::kQuit) {
-			Quit();
-		}
+bool Init() {
+	State& state = GetState();
 
-		if (event.type == EventType::kKeyDown) {
-			if (event.key == SDLK_ESCAPE) {
-				Quit();
-			}
-			if (event.key == SDLK_F1) {
-				engine::Util::ToggleMusic();
-			}
-		}
+	engine::AppConfig config;
+	if (!state.app.Init(config)) {
+		return false;
 	}
-}
 
-void Game::Run() {
-	while (running_) {
-		clock_.Tick(120);
-
-		Events();
-
-		Update();
-
-		Draw();
-
-		engine::graphics::Update();
+	if (!res::Load(state.app.display(), state.app.assets_root())) {
+		return false;
 	}
+
+	BuildRooms();
+
+	RegisterCollisions(state.app.world());
+
+	state.app.world()->StartMap(MainRoom());
+	return true;
 }
 
-void Game::Quit() { running_ = false; }
+void Shutdown() { GetState().app.Shutdown(); }
+
+void Quit() { GetState().app.Quit(); }
 
 }  // namespace game

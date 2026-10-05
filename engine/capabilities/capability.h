@@ -41,10 +41,9 @@ namespace std {
 template <>
 struct hash<engine::Capability> {
 	size_t operator()(const engine::Capability& capability) const {
-		size_t seed = capability.type().hash_code();
-		seed ^= std::hash<int>()(capability.value()) + 0x9e3779b9 + (seed << 6) +
-			(seed >> 2);
-		return seed;
+		size_t type_hash = capability.type().hash_code();
+		size_t value_hash = std::hash<int>()(capability.value());
+		return type_hash ^ (value_hash << 1);
 	}
 };
 

@@ -1,64 +1,24 @@
 #ifndef HYPER_GAME_GAME_H_
 #define HYPER_GAME_GAME_H_
 
-#include "engine/clock.h"
-#include "engine/graphics.h"
-#include "engine/vec2.h"
+#include "engine/display/display.h"
+#include "engine/positions/game_map.h"
+#include "engine/positions/world.h"
 
+// this is where the maps are built and the engine starts when the window is set up
 namespace game {
 
-// A class used to represent a Game.
-//
-// Author: Yash Mahmud
-class Game {
-public:
-	// Author: Yash Mahmud
-	//
-	// Constructs all the necessary attributes for the game object.
-	Game();
+// both are valid once Init has run
+engine::World* GetWorld();
+engine::Display* GetDisplay();
 
-	Game(const Game&) = delete;
-	Game& operator=(const Game&) = delete;
+// main GameMap that you start in
+engine::GameMap* MainRoom();
 
-	~Game();
+bool Init();
+void Shutdown();
 
-	// Author: Yash Mahmud
-	//
-	// Draws the game on the screen.
-	void Draw();
-
-	// Author: Yash Mahmud
-	//
-	// Updates the state of the game.
-	void Update();
-
-	// Author: Yash Mahmud
-	//
-	// Handles the game events.
-	void Events();
-
-	// Author: Yash Mahmud
-	//
-	// Runs the game.
-	void Run();
-
-	// Author: Yash Mahmud
-	//
-	// Quits the game.
-	void Quit();
-
-	bool running() const { return running_; }
-	const engine::Vec2& screen_size() const { return screen_size_; }
-	const engine::Vec2& screen_center() const { return screen_center_; }
-	engine::Surface* screen() const { return screen_; }
-
-private:
-	bool running_;
-	engine::Vec2 screen_size_;
-	engine::Vec2 screen_center_;
-	engine::Surface* screen_;
-	engine::Clock clock_;
-};
+void Quit();
 
 }  // namespace game
 

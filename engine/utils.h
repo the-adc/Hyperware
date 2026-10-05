@@ -1,8 +1,6 @@
 #ifndef HYPER_ENGINE_UTILS_H_
 #define HYPER_ENGINE_UTILS_H_
 
-#include <string>
-
 #include "engine/color.h"
 
 namespace engine {
@@ -13,16 +11,13 @@ public:
 
 	Util() = delete;
 
-	static void MixerInit();
-	static void MixerQuit();
-
 	// Returns the x-component of a vector given a distance and angle.
 	static double LengthDirX(double dist, double angle);
 
 	// Returns the y-component of a vector given a distance and angle.
 	static double LengthDirY(double dist, double angle);
 
-	// Cuts the components off to whole numbers, like GameMaker's make_color_rgb.
+	// like make_color_rgb, the numbers are cut off to whole numbers
 	static Color MakeColorRgb(double r, double g, double b);
 
 	// amount is 0 for the first colour and 1 for the second.
@@ -35,15 +30,6 @@ public:
 
 	static double Lerp(double from, double to, double amount);
 	static double Clamp(double value, double low, double high);
-
-	// Plays a sound effect.
-	static void PlaySFX(const std::string& sound_file);
-
-	// Plays a music file.
-	static void PlayMusic(const std::string& music_file);
-
-	// Toggles the background music.
-	static void ToggleMusic();
 };
 
 }  // namespace engine

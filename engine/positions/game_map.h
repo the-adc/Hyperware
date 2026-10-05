@@ -68,7 +68,8 @@ public:
 	// created in the order they were placed
 	template <typename T>
 	void AddPlacement(double x, double y, int depth) {
-		placements_.push_back({[] { return std::make_unique<T>(); }, x, y, depth});
+		placements_.push_back(
+			{[] { return std::make_unique<T>(); }, x, y, depth});
 	}
 	const std::vector<Placement>& placements() const { return placements_; }
 

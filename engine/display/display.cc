@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <cstdint>
 #include <iostream>
 
 #include "engine/utils.h"
@@ -21,13 +22,15 @@ sf::Vector2u Size(int width, int height) {
 }
 
 sf::Color ToSf(Color color, double alpha) {
-	int a = static_cast<int>(255 * Util::Clamp(alpha, 0.0, 1.0) + 0.5);
+	double clamped = Util::Clamp(alpha, 0.0, 1.0);
+	auto a = static_cast<std::uint8_t>(255 * clamped + 0.5);
 	return sf::Color(color.r, color.g, color.b, a);
 }
 
 sf::Text MakeText(const sf::Font& font, unsigned int size,
 	const std::string& value) {
-	return sf::Text(font, sf::String::fromUtf8(value.begin(), value.end()), size);
+	sf::String text = sf::String::fromUtf8(value.begin(), value.end());
+	return sf::Text(font, text, size);
 }
 
 // left/center/right and top/middle/bottom in order of enums
@@ -35,12 +38,10 @@ const double kAlignFraction[] = {0.0, 0.5, 1.0};
 
 }  // namespace
 
-bool Display::Init(const std::string& title, bool start_fullscreen,
-	bool hidden) {
+bool Display::Init(const std::string& title, bool start_fullscreen) {
 	title_ = title;
-	fullscreen_ = start_fullscreen && !hidden;
+	fullscreen_ = start_fullscreen;
 	CreateWindow();
-	window_.setVisible(!hidden);
 	return SetRoomSurface(view_width_, view_height_, port_width_, port_height_);
 }
 

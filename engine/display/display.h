@@ -17,7 +17,7 @@ public:
 	enum class VAlign { kTop, kMiddle, kBottom };
 	enum class BlendMode { kNormal, kAdd };
 
-	bool Init(const std::string& title, bool start_fullscreen, bool hidden);
+	bool Init(const std::string& title, bool start_fullscreen);
 	void Shutdown();
 
 	sf::RenderWindow& window() { return window_; }
@@ -54,8 +54,8 @@ public:
 
 	void RectangleColor(double x1, double y1, double x2, double y2, Color c1,
 		Color c2, Color c3, Color c4, bool outline);
-	void CircleColor(double x, double y, double radius, Color inner, Color outer,
-		bool outline);
+	void CircleColor(double x, double y, double radius, Color inner,
+		Color outer, bool outline);
 
 	void ToggleFullscreen();
 	void SetCursorVisible(bool visible);

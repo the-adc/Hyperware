@@ -204,12 +204,13 @@ void GameMap::Draw(Display* display) {
 		}
 	}
 
-	std::stable_sort(items.begin(), items.end(), [](const Item& a, const Item& b) {
+	auto draw_first = [](const Item& a, const Item& b) {
 		if (a.depth != b.depth) {
 			return a.depth > b.depth;
 		}
 		return a.order < b.order;
-	});
+	};
+	std::stable_sort(items.begin(), items.end(), draw_first);
 
 	for (const Item& item : items) {
 		if (item.actor) {

@@ -1,54 +1,19 @@
 #include "engine/utils.h"
 
-#include <SDL_mixer.h>
-
+#include <algorithm>
 #include <cmath>
-#include <map>
-
-#include "engine/graphics.h"
+#include <cstdint>
 
 namespace engine {
 
 namespace {
 
-std::map<std::string, Mix_Chunk*>& SoundCache() {
-	static auto* cache = new std::map<std::string, Mix_Chunk*>();
-	return *cache;
-}
-
-Mix_Music* g_music = nullptr;
-
-int ToChannel(double value) {
+std::uint8_t ToChannel(double value) {
 	int channel = static_cast<int>(value);
-	if (channel < 0) {
-		return 0;
-	}
-	if (channel > 255) {
-		return 255;
-	}
-	return channel;
+	return static_cast<std::uint8_t>(std::clamp(channel, 0, 255));
 }
 
 }  // namespace
-
-void Util::MixerInit() {
-	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-	Mix_AllocateChannels(32);
-}
-
-void Util::MixerQuit() {
-	for (std::map<std::string, Mix_Chunk*>::iterator it = SoundCache().begin();
-		it != SoundCache().end(); ++it) {
-		Mix_FreeChunk(it->second);
-	}
-	SoundCache().clear();
-	if (g_music) {
-		Mix_HaltMusic();
-		Mix_FreeMusic(g_music);
-		g_music = nullptr;
-	}
-	Mix_CloseAudio();
-}
 
 double Util::LengthDirX(double dist, double angle) {
 	double radian_angle = angle * kPi / 180;
@@ -97,42 +62,6 @@ double Util::Clamp(double value, double low, double high) {
 		return high;
 	}
 	return value;
-}
-
-void Util::PlaySFX(const std::string& sound_file) {
-	std::string path = "assets/sounds/" + sound_file + ".ogg";
-	std::map<std::string, Mix_Chunk*>::iterator found = SoundCache().find(path);
-	Mix_Chunk* snd;
-	if (found != SoundCache().end()) {
-		snd = found->second;
-	} else {
-		snd = Mix_LoadWAV(graphics::ResolvePath(path).c_str());
-		SoundCache()[path] = snd;
-	}
-	if (snd) {
-		Mix_PlayChannel(-1, snd, 0);
-	}
-}
-
-void Util::PlayMusic(const std::string& music_file) {
-	if (g_music) {
-		Mix_HaltMusic();
-		Mix_FreeMusic(g_music);
-		g_music = nullptr;
-	}
-	g_music = Mix_LoadMUS(
-		graphics::ResolvePath("assets/sounds/" + music_file + ".ogg").c_str());
-	if (g_music) {
-		Mix_PlayMusic(g_music, -1);
-	}
-}
-
-void Util::ToggleMusic() {
-	if (Mix_PlayingMusic()) {
-		Mix_HaltMusic();
-	} else {
-		PlayMusic("musBackground");
-	}
 }
 
 }  // namespace engine
