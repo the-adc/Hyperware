@@ -1,36 +1,22 @@
-#ifndef HYPER_ENGINE_RANDOM_H_
-#define HYPER_ENGINE_RANDOM_H_
+#ifndef ENGINE_RANDOM_H
+#define ENGINE_RANDOM_H
 
+#include <algorithm>
 #include <random>
+#include <vector>
 
-namespace engine {
+std::mt19937 &rng();
 
-class Random {
-public:
-	Random() = delete;
+int randint(int a, int b);
 
-	static std::mt19937& RNG();  // NOLINT(readability-identifier-naming)
+template <typename T>
+void shuffle(std::vector<T> &values) {
+    std::shuffle(values.begin(), values.end(), rng());
+}
 
-	static int IntRandomRange(int a, int b);
+template <typename T>
+T &choice(std::vector<T> &values) {
+    return values[(std::size_t)randint(0, (int)values.size() - 1)];
+}
 
-	// Real number from a to b, both included. a can't be greater than b.
-	static double DoubleRandomRange(double a, double b);
-
-	// Same as DoubleRandomRange but for floats.
-	static float FloatRandomRange(float a, float b);
-
-	// Seeds generator from the clock.
-	static void Randomize();
-
-	static void SetDeterministicSeed(unsigned int seed);
-
-	static int IntRandom(int n);
-
-	static double DoubleRandom(double n);
-
-	static float FloatRandom(float n);
-};
-
-}  // namespace engine
-
-#endif  // HYPER_ENGINE_RANDOM_H_
+#endif

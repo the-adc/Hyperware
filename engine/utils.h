@@ -1,37 +1,78 @@
-#ifndef HYPER_ENGINE_UTILS_H_
-#define HYPER_ENGINE_UTILS_H_
+#ifndef ENGINE_UTILS_H
+#define ENGINE_UTILS_H
 
-#include "engine/color.h"
+#include <string>
 
-namespace engine {
+void mixer_init();
+void mixer_quit();
 
-class Util {
-public:
-	static constexpr double kPi = 3.14159265358979323846;
+/*
+Author: Anas Tarek Qumhiyeh
 
-	Util() = delete;
+Returns the x-component of a vector given a distance and angle.
 
-	// Returns the x-component of a vector given a distance and angle.
-	static double LengthDirX(double dist, double angle);
+Parameters
+----------
+    dist : float
+        the distance of the vector
+    angle : float
+        the angle of the vector
 
-	// Returns the y-component of a vector given a distance and angle.
-	static double LengthDirY(double dist, double angle);
+Returns
+-------
+    float
+        the x-component of the vector
+*/
+double lengthdir_x(double dist, double angle);
 
-	// like make_color_rgb, the numbers are cut off to whole numbers
-	static Color MakeColorRgb(double r, double g, double b);
+/*
+Author: Anas Tarek Qumhiyeh
 
-	// amount is 0 for the first colour and 1 for the second.
-	static Color MergeColor(const Color& first, const Color& second,
-		double amount);
+Returns the y-component of a vector given a distance and angle.
 
-	// angle in degrees from (x1, y1) to (x2, y2), between 0 and 360.
-	static double PointDirection(double x1, double y1, double x2, double y2);
-	static double PointDistance(double x1, double y1, double x2, double y2);
+Parameters
+----------
+    dist : float
+        the distance of the vector
+    angle : float
+        the angle of the vector
 
-	static double Lerp(double from, double to, double amount);
-	static double Clamp(double value, double low, double high);
-};
+Returns
+-------
+    float
+        the y-component of the vector
+*/
+double lengthdir_y(double dist, double angle);
 
-}  // namespace engine
+/*
+Author: Yash Mahmud
 
-#endif  // HYPER_ENGINE_UTILS_H_
+Plays a sound effect.
+
+Parameters
+----------
+    sound_file : str
+        the filename of the sound effect
+*/
+void play_sound(const std::string &sound_file);
+
+/*
+Author: Yash Mahmud
+
+Plays a music file.
+
+Parameters
+----------
+    music_file : str
+        the filename of the music file
+*/
+void play_music(const std::string &music_file);
+
+/*
+Author: Yash Mahmud
+
+Toggles the background music.
+*/
+void toggle_music();
+
+#endif
